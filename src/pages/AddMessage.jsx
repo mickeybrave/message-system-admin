@@ -2,19 +2,31 @@
 import React, { useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const AddMessage = () => {
   const [countryCode, setCountryCode] = useState('');
   const [greeting, setGreeting] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const navigate = useNavigate();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const message = { countryCode, greeting, startDate, endDate };
+
+    const message = {
+      countryCode,
+      greeting,
+      startDate,
+      endDate: endDate || null, // Set endDate to null if it's empty
+    };
+
     try {
       await axiosInstance.post('/messages', message);
       alert('Message added successfully');
+      navigate('/'); // Redirect to message list page
     } catch (error) {
       console.error('There was an error adding the message!', error);
       alert('There was an error adding the message. Please check the console for more details.');
