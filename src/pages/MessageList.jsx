@@ -69,8 +69,11 @@ const MessageList = () => {
           ))}
         </tbody>
       </table>
-      <Link to="/add" className="btn btn-primary">
-          Add Message
+      <Link to="/add" className="btn btn-primary me-1">
+          Add message
+        </Link>
+        <Link to="/GetMessage" className="btn btn-secondary me-1">
+          Get message
         </Link>
     </div>
   );

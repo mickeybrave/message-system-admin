@@ -6,6 +6,7 @@ import AddMessage from './pages/AddMessage';
 import UpdateMessage from './pages/UpdateMessage';
 import DeleteMessage from './pages/DeleteMessage';
 import MessageList from './pages/MessageList';
+import MessageByCodeAndDate from './pages/MessageByCodeAndDate';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/update/:id" element={<UpdateMessage />} />
           <Route path="/delete/:id" element={<DeleteMessage />} />
           <Route path="/" element={<MessageList />} exact />
+          <Route path="/GetMessage" element={<MessageByCodeAndDate />} exact />
         </Routes>
       </div>
     </Router>
