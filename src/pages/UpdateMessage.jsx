@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const UpdateMessage = () => {
-  const history = useNavigate();
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const [countryCode, setCountryCode] = useState('');
   const [greeting, setGreeting] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+
 
   useEffect(() => {
     const fetchMessage = async () => {
@@ -35,12 +35,12 @@ const UpdateMessage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedMessage = { countryCode, greeting, startDate, endDate };
+    const updatedMessage = { countryCode, greeting, startDate, endDate, id };
 
     try {
       await axiosInstance.put(`/messages/${id}`, updatedMessage);
       alert('Message updated successfully');
-      history.push('/'); // Redirect back to message list after update
+      navigate('/'); // Redirect back to message list after update
     } catch (error) {
       console.error('Error updating message:', error);
       alert('There was an error updating the message. Please check the console for more details.');
